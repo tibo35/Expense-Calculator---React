@@ -1,6 +1,8 @@
-import ExpenseItem from "./components/ExpenseItem";
+import React from "react";
+import NewExpense from "./components/NewExpense/NewExpense";
 import Expenses from "./components/Expenses/Expenses";
-function App() {
+
+const App = () => {
   const expenses = [
     {
       id: "e1",
@@ -23,12 +25,24 @@ function App() {
     },
   ];
 
+  const addExpenseHandler = expense => {
+    console.log('in AppJs')
+  }
+  // OLD WAY: With import React from 'react' on each component, pure JSX:
+
+  // return React.createElement(
+  //   "div",
+  //   {},
+  //   React.createElement("h2", {}, "Let's get started!"),
+  //   React.createElement(Expenses, { items: expenses })
+  // );
+
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <NewExpense onAddExpense={addExpenseHandler}/>
       <Expenses items={expenses} />
     </div>
   );
-}
+};
 
 export default App;
